@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hdaniele <hdaniele@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:20:51 by mmuriloj          #+#    #+#             */
-/*   Updated: 2023/06/22 16:02:11 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/07/12 16:53:05 by hdaniele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	ft_echo(char **args)
 	return (0);
 }
 
-/*int	main(int argc, char *args[])
-{
-	ft_echo(args);
-	return (0);
-}*/
+// int	main(int argc, char *args[])
+// {
+// 	ft_echo(args);
+// 	return (0);
+// }
