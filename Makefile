@@ -22,7 +22,7 @@ OBJS			=	$(SOURCES_LIST:.c=.o)
 OBJECTS			=	${addprefix ${OBJECTS_DIR}, ${OBJECTS_LIST}}
 
 LIBFT			=	${LIBFT_DIR}libft.a
-LIBFT_DIR		=	./mlibft/
+LIBFT_DIR		=	./libft/
 LIBFT_HEADERS	=	${LIBFT_DIR}includes/
 
 CC				=	cc 
@@ -62,7 +62,8 @@ fclean: clean
 re:	fclean all
 
 run:	
-	gcc -g3 main.c ./libft/*.c ./builtins/ft_echo.c ./builtins/ft_pwd.c ./builtins/ft_env.c ./builtins/aux/*.c -lreadline -o minishell
+	clear
+	gcc -g3 main.c ./libft/*.c ./builtins/ft_echo.c ./builtins/ft_pwd.c ./builtins/ft_env.c ./builtins/ft_cd.c ./builtins/aux/*.c -lreadline -o minishell
 	clear
 #	gcc main.c ./libft/*.c ./builtins/*echo* ./builtins/*pwd.c ./builtins/aux/*.c -lreadline -o minishell
 

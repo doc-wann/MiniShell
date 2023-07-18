@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_env.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/18 17:12:36 by mumontei          #+#    #+#             */
+/*   Updated: 2023/07/18 17:12:37 by mumontei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/minishell.h"
 
 static int	env_exists(char **vars, char *search)
@@ -25,9 +37,9 @@ char	*get_env(char **envs, char *search)
 		return (NULL);
 	search++;
 	search = ft_strjoin(search, "=");
-	while(envs[i])
+	while (envs[i])
 	{
-		if(ft_strncmp(envs[i], search, ft_strlen(search)) == 0)
+		if (ft_strncmp(envs[i], search, ft_strlen(search)) == 0)
 		{
 			env = envs[i] + ft_strlen(search);
 			free(search);
@@ -36,8 +48,8 @@ char	*get_env(char **envs, char *search)
 		else
 			i++;
 	}
-	if(env)
-		return(env);
+	if (env)
+		return (env);
 	else
 		return (0);
 }
