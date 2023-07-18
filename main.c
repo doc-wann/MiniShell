@@ -26,6 +26,10 @@ int main(int ac, char **av, char **env)
 		{
 			ft_pwd();
 		}
+		else if (ft_strncmp(read, "cd  ", 2) == 0)
+		{
+			ft_cd(array, env);
+		}
 		else
 			write(1, "$Error, the command is not recognized\n", 38);
 	}

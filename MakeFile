@@ -1,0 +1,2 @@
+make : all
+	gcc main.c ./libft/*.c ./builtins/*.c ./builtins/aux/*.c
