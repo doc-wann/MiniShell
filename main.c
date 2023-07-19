@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 18:00:40 by mumontei          #+#    #+#             */
-/*   Updated: 2023/07/18 18:56:17 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/07/19 13:47:42 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,29 @@
 
 int	main(int ac, char **av, char **env)
 {
-	char	*read;
-	char	**array;
-	int		len;
-	char	*str;
+	t_hashtable	*ht;
+	char		*read;
+	char		**array;
+	int			len;
+	char		*str;
+
+	ht = ht_create();
+	ht_insert(ht, "apple", 5);
+	ht_insert(ht, "banana", 10);
+	ht_insert(ht, "orange", 8);
+	ht_insert(ht, "grape", 15);
+
+	ht_print(ht);
+
+	ht_delete(ht, "banana");
+
+	printf("\nAfter deleting 'banana':\n");
+	ht_print(ht);
+
+	ht_clear(ht);
+	free(ht);
+
+	return (0);
 
 	while (1)
 	{
