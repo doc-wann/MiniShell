@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create.c                                           :+:      :+:    :+:   */
+/*   ht_create.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 18:51:12 by mumontei          #+#    #+#             */
-/*   Updated: 2023/07/19 12:41:23 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/07/20 12:57:01 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-
 
 // Create and initialize a new hashtable
 t_hashtable	*ht_create(void)
@@ -29,5 +27,3 @@ t_hashtable	*ht_create(void)
 	}
 	return (ht);
 }
-
-

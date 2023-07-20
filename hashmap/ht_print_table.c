@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_table.c                                      :+:      :+:    :+:   */
+/*   ht_print_table.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 12:32:23 by mumontei          #+#    #+#             */
-/*   Updated: 2023/07/19 12:32:24 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/07/20 12:56:31 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,17 @@ void	ht_print(const t_hashtable *ht)
 	t_hashnode	*current;
 
 	current = NULL;
-	printf("t_hashtable Contents:\n");
-	i = 0;
-	while (i < TABLE_SIZE)
+	i = -1;
+	while (++i < TABLE_SIZE)
 	{
-		if (ht->table[i] != NULL)
+		if (ht->table[i])
 		{
 			current = ht->table[i];
 			while (current != NULL)
 			{
-				printf("[%s:\t\t%d] ", current->key, current->value);
+				printf("%s: %s\n", current->key, current->value);
 				current = current->next;
 			}
-			printf("\n");
 		}
-		i++;
 	}
 }
