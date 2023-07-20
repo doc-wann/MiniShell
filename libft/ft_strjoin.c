@@ -3,47 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdaniele <hdaniele@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 20:11:37 by hdaniele          #+#    #+#             */
-/*   Updated: 2022/09/15 20:54:47 by hdaniele         ###   ########.fr       */
+/*   Created: 2022/04/29 23:36:56 by mumontei          #+#    #+#             */
+/*   Updated: 2023/07/20 12:36:57 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*result;
-	int		index1;
-	int		index2;
+	char	*res;
+	int		i;
+	int		j;
 
-	index1 = 0;
-	index2 = 0;
-	result = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!result)
+	if (!s1 || !s2)
 		return (NULL);
-	while (s1[index1] != '\0')
+	res = malloc(1 + (ft_strlen(s1) + ft_strlen(s2)) * sizeof(char));
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (s1[i] != '\0')
 	{
-		result[index1] = s1[index1];
-		index1++;
+		res[i] = s1[i];
+		i++;
 	}
-	index2 = index1;
-	while (s2[index2 - index1] != '\0')
+	j = 0;
+	while (s2[j] != '\0')
 	{
-		result[index2] = s2[index2 - index1];
-		index2++;
+		res[i + j] = s2[j];
+		j++;
 	}
-	result[index2] = '\0';
-	return (result);
+	res[i + j] = '\0';
+	return (res);
 }
-
-//int	main(void)
-//{
-//	char	string[] = {"eai\n"};
-//	char	string1[] = {" caralho\n"};
-//	
-//	printf("%s", ft_strjoin(string, string1));
-//	return (0);
-//}
