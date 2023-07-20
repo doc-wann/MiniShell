@@ -12,7 +12,7 @@
 # include <readline/history.h>
 
 //hashmap
-# define TABLE_SIZE 100
+# define TABLE_SIZE 300
 # include <stdlib.h>
 # include <string.h>
 
@@ -20,7 +20,7 @@
 typedef struct s_hashnode
 {
 	char				*key;
-	int					value;
+	char				*value;
 	struct s_hashnode	*next;
 }	t_hashnode;
 
@@ -35,7 +35,8 @@ unsigned int	hash(const char *key);
 void			ht_clear(t_hashtable *ht);
 void			ht_print(const t_hashtable *ht);
 void			ht_delete(t_hashtable *ht, const char *key);
-void			ht_insert(t_hashtable *ht, const char *key, int value);
+void			ht_insert(t_hashtable *ht, const char *key, char *value);
+void			envars_to_hashtable(char **env, t_hashtable *ht);
 
 void			ft_cd(char *dir, char **env);
 int				ft_env(char **envp);
@@ -43,5 +44,6 @@ char			*get_env(char **envs, char *search);
 int				ft_echo(char **args);
 int				ft_pwd(void);
 void			put_endl(char *str, int fd);
+int				env_exists(char **vars, char *search);
 
 #endif

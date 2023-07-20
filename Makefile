@@ -63,8 +63,8 @@ re:	fclean all
 
 run:	
 #	gcc -g3 main.c ./libft/*.c ./builtins/ft_echo.c ./builtins/ft_pwd.c ./builtins/ft_env.c ./builtins/ft_cd.c ./builtins/aux/*.c -lreadline -o minishell
-	gcc -g3 main.c ./libft/*.c ./hashmap/ht*.c ./builtins/ft_echo.c ./builtins/ft_pwd.c ./builtins/ft_env.c ./builtins/ft_cd.c ./builtins/aux/*.c -I./includes/ -lreadline -o minishell
 	clear
+	gcc -g3 main.c ./libft/*.c ./hashmap/ht*.c ./builtins/ft_echo.c ./builtins/ft_pwd.c ./builtins/ft_env.c ./builtins/ft_cd.c ./builtins/aux/*.c -I./includes/ -lreadline -o minishell
 #	gcc main.c ./libft/*.c ./builtins/*echo* ./builtins/*pwd.c ./builtins/aux/*.c -lreadline -o minishell
 
 .PHONY:		all, clean, fclean, re
