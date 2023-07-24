@@ -6,7 +6,7 @@
 /*   By: hdaniele <hdaniele@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:19:37 by mmuriloj          #+#    #+#             */
-/*   Updated: 2023/07/24 18:31:03 by hdaniele         ###   ########.fr       */
+/*   Updated: 2023/07/24 18:36:17 by hdaniele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ void	ft_cd(char **args, char **envs)
 		}
 		else if (args[1])
 		{
-			// if(args[1] == compare)
-				// chdir(ft_backtrack(ft_strjoin("/",homepath)));
+			//FOR SOME REASON THE CHDIR REACTS TO BEING SENT A STEP BACK WITHOUT HELP, BUUUUUT IT WILL TRIGGER THE ERROR MESSAGE!!!
 			if(chdir(ft_strjoin(getcwd(NULL, 100), path_parser(args[1]))) != 0)
 				write(1, ft_strjoin(ft_strjoin("cd: no such file or directory: ", args[1]), "\n"), 31 + ft_strlen(args[1]) + 1);
 		}
@@ -42,6 +41,7 @@ void	ft_cd(char **args, char **envs)
 		return ;
 }
 
+//maynotbeneeded :(
 char *ft_backtrack(char *track)
 {
 	int i;

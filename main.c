@@ -35,6 +35,6 @@ int main(int ac, char **av, char **env)
 			ft_cd(array, env);
 		}
 		else
-			write(1, "$Error, the command is not recognized\n", 38);
+			printf("%s: the command is not recognized\n", read);
 	}
 }
