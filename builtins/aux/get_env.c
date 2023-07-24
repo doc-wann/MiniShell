@@ -5,6 +5,7 @@ char *get_env(char **envs, char *search)
 	int i;
 	char *env;
 
+	env = NULL;
 	i = 0;
 	if (ft_strlen(search) < 2)
 		return (NULL);
@@ -17,20 +18,24 @@ char *get_env(char **envs, char *search)
 	else
 		return (NULL);
 	search = ft_strjoin(search, "=");
-	while(envs[i])
+	while(i < ft_lstlen(envs))
 	{
 		if(ft_strncmp(envs[i], search, ft_strlen(search)) == 0)
 		{
-			env = envs[i] + ft_strlen(search) + 1;
+			env = envs[i];
 			break ;
 		}
-		else if(ft_strncmp(envs[i], "TERM= ", 5) == 0)
-			break ;
 		else
+		{
 			i++;
+		}
 	}
-	if(env)
-		return(env);
+	if (env)
+	{
+		return(env + ft_strlen(search) + 1);
+	}
 	else
-		return (NULL);
+	{
+		return(NULL);
+	}
 }

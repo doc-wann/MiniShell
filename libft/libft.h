@@ -6,7 +6,7 @@
 /*   By: hdaniele <hdaniele@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 21:10:41 by hdaniele          #+#    #+#             */
-/*   Updated: 2022/09/28 21:11:52 by hdaniele         ###   ########.fr       */
+/*   Updated: 2023/07/24 18:24:28 by hdaniele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
+char    *ft_strncpy(char *src, unsigned int n);
+int		ft_lstlen(char **s);
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 int		ft_isalnum(int arg);
