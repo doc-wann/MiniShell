@@ -6,7 +6,7 @@
 /*   By: hdaniele <hdaniele@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:19:37 by mmuriloj          #+#    #+#             */
-/*   Updated: 2023/07/24 18:36:17 by hdaniele         ###   ########.fr       */
+/*   Updated: 2023/07/25 17:23:07 by hdaniele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@ void	ft_cd(char **args, char **envs)
 	char *homepath;
 	char *compare;
 
+	int test;
+
 	compare = ft_strdup("cd");
 
 	homepath = get_env(envs, "$HOME");
 	if(ft_strncmp(args[0], "cd ", 2) == 0)
 	{
+		if (ft_strncmp(args[1], "$", 1) == 0)
+			args[1] = get_env(envs, args[1]);
 		compare = "..";
 		if(!args[1])
 		{
@@ -32,8 +36,17 @@ void	ft_cd(char **args, char **envs)
 		}
 		else if (args[1])
 		{
-			//FOR SOME REASON THE CHDIR REACTS TO BEING SENT A STEP BACK WITHOUT HELP, BUUUUUT IT WILL TRIGGER THE ERROR MESSAGE!!!
-			if(chdir(ft_strjoin(getcwd(NULL, 100), path_parser(args[1]))) != 0)
+			if (ft_strncmp(args[1], "..\0", 3) == 0)
+			{
+				chdir(ft_backtrack(getcwd(NULL, 100)));
+			}
+			else if (ft_strncmp(args[1], "../", 3) == 0)
+			{
+				chdir(ft_backtrack(getcwd(NULL, 100)));
+				args[1] += 3;
+				ft_cd(args, envs);
+			}
+			else if(chdir(ft_strjoin(getcwd(NULL, 100), path_parser(args[1]))) != 0)
 				write(1, ft_strjoin(ft_strjoin("cd: no such file or directory: ", args[1]), "\n"), 31 + ft_strlen(args[1]) + 1);
 		}
 	}
@@ -49,7 +62,7 @@ char *ft_backtrack(char *track)
 	i = 0;
 	while(track[i])
 		i++;
-	while(track[i] && i > 0 && track[i] != '/')
+	while(i > 0 && track[i] != '/')
 		i--;
 	if (i > 0 && i < ft_strlen(track))
 		return (ft_strncpy(track, i));
