@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:12:36 by mumontei          #+#    #+#             */
-/*   Updated: 2023/07/20 11:43:10 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/07/20 14:53:13 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	env_exists(char **vars, char *search)
 	int	i;
 
 	i = 0;
-	//search++;
 	while (vars[i])
 	{
 		if (ft_strncmp(vars[i], search, ft_strlen(search)) == 0)
@@ -63,7 +62,7 @@ static char	*get_key(char *envar)
 		key_length++;
 	key = (char *)malloc(sizeof(char) * key_length + 1);
 	i = -1;
-	while(++i < key_length)
+	while (++i < key_length)
 		key[i] = envar[i];
 	key[i] = '\0';
 	return (key);
@@ -72,22 +71,17 @@ static char	*get_key(char *envar)
 char	*get_env(char **envs, char *search)
 {
 	int		i;
-	char	*env;
 	char	*value;
 
 	i = 0;
 	value = NULL;
 	if (!search || !env_exists(envs, search))
 		return (NULL);
-	//search++;
-	//search = ft_strjoin(search, "=");
 	while (envs[i])
 	{
 		if (ft_strncmp(envs[i], search, ft_strlen(search) - 1) == 0)
 		{
 			value = get_value(search);
-			env = get_key(search);
-			//free(search);
 			break ;
 		}
 		else

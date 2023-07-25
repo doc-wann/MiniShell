@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ht_hash.c                                          :+:      :+:    :+:   */
+/*   ht_search.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 12:32:17 by mumontei          #+#    #+#             */
-/*   Updated: 2023/07/20 21:30:14 by mumontei         ###   ########.fr       */
+/*   Created: 2023/07/20 20:06:14 by mumontei          #+#    #+#             */
+/*   Updated: 2023/07/20 21:44:40 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-// Hash function
-unsigned int	hash(const char *key)
+int	ht_search(char *key)
 {
-	int				i;
-	unsigned int	hash_value;
+	int			index;
+	t_hashnode	*ptr;
 
-	hash_value = 0;
-	i = 0;
-	while (key && key[i] != '\0')
-	{
-		//hash_value = key[i] + 31 * hash_value;
-		hash_value = ((hash_value << 5) + hash_value) + key[i];
-		i++;
-	}
-	return (hash_value % TABLE_SIZE);
+	ptr = NULL;
+	if (!key)
+		return (0);
+	index = hash(key);
+	ptr = g_minishell.env->table[index];
+	if (ft_strcmp(ptr->key, key) == 0)
+		return (TRUE);
+	while (ptr->key != key && g_minishell.env->table[index]->next != NULL)
+		ptr = g_minishell.env->table[index]->next;
+	return (FALSE);
 }

@@ -12,9 +12,16 @@
 # include <readline/history.h>
 
 //hashmap
-# define TABLE_SIZE 300
+# define TABLE_SIZE 1000
 # include <stdlib.h>
 # include <string.h>
+
+
+typedef struct s_minishell
+{
+	struct s_hashtable	*env;
+	int					exit_code;
+}	t_minishell;
 
 // hashnode structure for chaining
 typedef struct s_hashnode
@@ -30,15 +37,18 @@ typedef struct s_hashtable
 	t_hashnode	*table[TABLE_SIZE];
 }	t_hashtable;
 
+extern t_minishell	g_minishell;
+
 t_hashtable		*ht_create(void);
 unsigned int	hash(const char *key);
+int				ht_search(char *key);
 void			ht_clear(t_hashtable *ht);
 void			ht_print(const t_hashtable *ht);
 void			ht_delete(t_hashtable *ht, const char *key);
 void			ht_insert(t_hashtable *ht, const char *key, char *value);
 void			envars_to_hashtable(char **env, t_hashtable *ht);
-
-void			ft_cd(char *dir, char **env);
+void			chdir_path(char *path);
+void			ft_cd(char *dir);
 int				ft_env(char **envp);
 char			*get_env(char **envs, char *search);
 int				ft_echo(char **args);

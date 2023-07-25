@@ -6,25 +6,27 @@
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 18:00:40 by mumontei          #+#    #+#             */
-/*   Updated: 2023/07/20 12:49:13 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/07/25 17:54:49 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/minishell.h" 
+#include "./includes/minishell.h"
+
+t_minishell	g_minishell;
 
 int	main(int ac, char **av, char **env)
 {
-	t_hashtable	*ht;
 	char		*read;
 	char		**array;
 	int			len;
 	char		*str;
 
-	ht = ht_create();
-	envars_to_hashtable(env, ht);
-	ht_print(ht);
-	// ht_clear(ht);
-	// free(ht);
+	g_minishell.env = ht_create();
+	envars_to_hashtable(env, g_minishell.env);
+	ft_cd("hashmap/");
+	ht_print(g_minishell.env);
+	ht_clear(g_minishell.env);
+	free(g_minishell.env);
 	return (0);
 
 	while (1)
