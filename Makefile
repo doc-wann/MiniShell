@@ -32,4 +32,8 @@ fclean: clean
 
 re: fclean all
 
+makentest:
+	@make re
+	@./MiniShell
+
 .PHONY: all bonus clean fclean re
