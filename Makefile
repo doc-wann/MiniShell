@@ -66,3 +66,5 @@ run:
 .PHONY:		all, clean, fclean, re
 
 #-exec set follow-fork-mode child
+
+#valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full -s

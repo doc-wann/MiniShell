@@ -12,7 +12,7 @@
 # include <readline/history.h>
 
 //hashmap
-# define TABLE_SIZE 1000
+# define TABLE_SIZE 100
 # include <stdlib.h>
 # include <string.h>
 
@@ -41,7 +41,7 @@ extern t_minishell	g_minishell;
 
 t_hashtable		*ht_create(void);
 unsigned int	hash(const char *key);
-int				ht_search(char *key);
+t_hashnode		*ht_search(char *key);
 void			ht_clear(t_hashtable *ht);
 void			ht_print(const t_hashtable *ht);
 void			ht_delete(t_hashtable *ht, const char *key);

@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 18:00:40 by mumontei          #+#    #+#             */
-/*   Updated: 2023/07/25 17:54:49 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/07/27 20:21:33 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int ac, char **av, char **env)
 
 	g_minishell.env = ht_create();
 	envars_to_hashtable(env, g_minishell.env);
-	ft_cd("hashmap/");
+	ft_cd("-");
 	ht_print(g_minishell.env);
 	ht_clear(g_minishell.env);
 	free(g_minishell.env);
