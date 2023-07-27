@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 21:10:41 by hdaniele          #+#    #+#             */
-/*   Updated: 2023/07/20 18:51:44 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/07/27 09:48:43 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "stdio.h"
 
 typedef struct s_list
 {
@@ -59,5 +60,5 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
-
+char	*ft_strncpy(char *src, unsigned int n);
 #endif
