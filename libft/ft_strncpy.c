@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/23 19:29:59 by mumontei          #+#    #+#             */
-/*   Updated: 2022/05/10 00:12:04 by mumontei         ###   ########.fr       */
+/*   Created: 2023/07/27 09:46:26 by mumontei          #+#    #+#             */
+/*   Updated: 2023/07/27 09:58:22 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strncpy(char *src, unsigned int n)
 {
-	char	*ptr;
+	unsigned int	index;
+	char			*dest;
 
-	ptr = (char *)s;
-	while (*ptr)
+	dest = ft_calloc(n, sizeof(char));
+	index = 0;
+	while (index < n && src[index] != '\0')
 	{
-		if (*ptr == (char)c)
-			return (ptr);
-		ptr++;
+		dest[index] = src[index];
+		index++;
 	}
-	if (c == '\0')
+	while (index < n)
 	{
-		return (ptr);
+		dest[index] = '\0';
+		index++;
 	}
-	return (NULL);
+	return (dest);
 }

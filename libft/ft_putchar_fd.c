@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdaniele <hdaniele@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 20:38:36 by hdaniele          #+#    #+#             */
-/*   Updated: 2022/09/22 00:10:31 by hdaniele         ###   ########.fr       */
+/*   Created: 2022/05/01 00:23:53 by mumontei          #+#    #+#             */
+/*   Updated: 2022/05/01 00:47:38 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

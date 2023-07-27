@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat copy.c                                  :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdaniele <hdaniele@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 21:30:35 by hdaniele          #+#    #+#             */
-/*   Updated: 2022/09/23 20:34:19 by hdaniele         ###   ########.fr       */
+/*   Created: 2022/04/22 23:48:40 by mumontei          #+#    #+#             */
+/*   Updated: 2022/05/14 23:50:24 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,24 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	slen;
-	size_t	dlen;
-	size_t	res;
 	size_t	i;
+	size_t	total_len;
+	size_t	len_src;
+	size_t	len_dst;
 
-	slen = ft_strlen(src);
-	dlen = ft_strlen(dst);
+	len_src = ft_strlen(src);
+	len_dst = ft_strlen(dst);
 	i = 0;
-	if (size > dlen)
-	{
-		res = dlen + slen;
-		while (src[i] != '\0' && (dlen + 1) < size)
-		{
-			dst[dlen] = src[i];
-			dlen++;
-			i++;
-		}
-		dst[dlen] = '\0';
-	}
+	if (size > len_dst)
+		total_len = len_src + len_dst;
 	else
-		res = size + slen;
-	return (res);
+		total_len = len_src + size;
+	while (src[i] && (len_dst + 1) < size)
+	{
+		dst[len_dst] = src[i];
+		len_dst++;
+		i++;
+	}
+	dst[len_dst] = '\0';
+	return (total_len);
 }
