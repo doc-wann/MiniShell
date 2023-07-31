@@ -46,7 +46,7 @@ void			ht_clear(t_hashtable *ht);
 void			ht_print(const t_hashtable *ht);
 void			ht_delete(t_hashtable *ht, const char *key);
 void			ht_insert(t_hashtable *ht, const char *key, char *value);
-void			envars_to_hashtable(char **env, t_hashtable *ht);
+void			envars_to_hashtable(char **env);
 void			chdir_path(char *path);
 void			ft_cd(char *dir);
 int				ft_env(char **envp);

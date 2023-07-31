@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 12:32:11 by mumontei          #+#    #+#             */
-/*   Updated: 2023/07/27 20:22:15 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/07/31 11:53:16 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	free_kv(char **kv)
 	free(kv);
 }
 
-void	envars_to_hashtable(char **env, t_hashtable *ht)
+void	envars_to_hashtable(char **env)
 {
 	int		i;
 	char	**kv;
@@ -56,7 +56,7 @@ void	envars_to_hashtable(char **env, t_hashtable *ht)
 			break ;
 		str = get_env(env, env[i]);
 		kv = ft_split(env[i], '=');
-		ht_insert(ht, kv[0], str);
+		ht_insert(g_minishell.env, kv[0], str);
 		free_kv(kv);
 	}
 }
