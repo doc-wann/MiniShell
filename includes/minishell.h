@@ -8,6 +8,7 @@
 # include "../libft/libft.h"
 # include <stdio.h>
 # include <unistd.h>
+# include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 
@@ -55,5 +56,12 @@ int				ft_echo(char **args);
 int				ft_pwd(void);
 void			put_endl(char *str, int fd);
 int				env_exists(char **vars, char *search);
-
+void			error_msg(char *command, char*msg, int status_code);
+void			ft_exit(char **args);
+char			*get_key(char *env);
+char			*get_value(char *env);
+void			declare_var(char **cmd, int index);
+int				export_var(char **command, int index);
+int				ft_export(char **command);
+void			minishell(void);
 #endif

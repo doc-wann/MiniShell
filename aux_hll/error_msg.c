@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 18:00:40 by mumontei          #+#    #+#             */
-/*   Updated: 2023/08/01 15:27:46 by mumontei         ###   ########.fr       */
+/*   Created: 2023/08/01 10:35:42 by mumontei          #+#    #+#             */
+/*   Updated: 2023/08/01 10:58:44 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/minishell.h"
+#include "../includes/minishell.h"
 
-t_minishell	g_minishell;
-
-int	main(int ac, char **av, char **env)
+void	error_msg(char *command, char*msg, int status_code)
 {
-	g_minishell.env = ht_create();
-	envars_to_hashtable(env);
-	ht_print(g_minishell.env);
-	ft_exit(env);
-	return (0);
-	// minishell();
+	char	*output;
+
+	write(1, "minishell: ", 11);
+	output = ft_strjoin(command, msg);
+	write(1, output, ft_strlen(output));
+	g_minishell.exit_code = status_code;
+	free(output);
 }

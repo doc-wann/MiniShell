@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:12:36 by mumontei          #+#    #+#             */
-/*   Updated: 2023/07/20 14:53:13 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/08/01 14:24:34 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,44 +26,44 @@ int	env_exists(char **vars, char *search)
 	return (FALSE);
 }
 
-static char	*get_value(char *envar)
+char	*get_value(char *env)
 {
 	char	*ptr;
 	int		i;
 
 	i = -1;
-	if (!envar)
+	if (!env)
 		return (0);
-	ptr = envar;
-	while (envar[++i])
+	ptr = env;
+	while (env[++i])
 	{
-		if (envar[i] == '=')
+		if (env[i] == '=')
 		{
 			i++;
-			ptr = (char *)&envar[i];
+			ptr = (char *)&env[i];
 			return (ptr);
 		}
 	}
 	return (ptr);
 }
 
-static char	*get_key(char *envar)
+char	*get_key(char *env)
 {
 	int		i;
 	int		key_length;
 	char	*key;
 
 	key = NULL;
-	if (!envar)
+	if (!env)
 		return (0);
 	key_length = 0;
 	i = -1;
-	while (envar[++i] != '=')
+	while (env[++i] != '=')
 		key_length++;
 	key = (char *)malloc(sizeof(char) * key_length + 1);
 	i = -1;
 	while (++i < key_length)
-		key[i] = envar[i];
+		key[i] = env[i];
 	key[i] = '\0';
 	return (key);
 }
