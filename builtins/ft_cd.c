@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:19:37 by mmuriloj          #+#    #+#             */
-/*   Updated: 2023/07/31 14:27:26 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:24:25 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	chdir_path(char *path)
 		chdir_home();
 		path = path + 2;
 	}
-	pwd = ht_search("PWD")->value;
+	pwd = ht_search(g_minishell.env, "PWD")->value;
 	if (chdir(path) == 0)
 	{
-		if (ht_search("OLDPWD"))
+		if (ht_search(g_minishell.env, "OLDPWD"))
 			ht_delete(g_minishell.env, "OLDPWD");
 		ht_insert(g_minishell.env, "OLDPWD", pwd);
 		pwd = getcwd(buf, 2048);
@@ -38,8 +38,8 @@ void	chdir_path(char *path)
 
 static void	chdir_oldpwd(void)
 {
-	if (ht_search("OLDPWD"))
-		chdir_path(ht_search("OLDPWD")->value);
+	if (ht_search(g_minishell.env, "OLDPWD"))
+		chdir_path(ht_search(g_minishell.env, "OLDPWD")->value);
 	else
 	{
 		write(1, "bash: cd: OLDPWD not set\n", 26);
@@ -52,7 +52,7 @@ static void	chdir_home(void)
 {
 	char	*home_path;
 
-	home_path = ft_strdup(ht_search("HOME")->value);
+	home_path = ft_strdup(ht_search(g_minishell.env, "HOME")->value);
 	chdir_path(home_path);
 	free(home_path);
 }

@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 12:32:23 by mumontei          #+#    #+#             */
-/*   Updated: 2023/07/20 12:56:31 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/08/02 16:00:59 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ht_print(const t_hashtable *ht)
 			current = ht->table[i];
 			while (current != NULL)
 			{
-				printf("%s: %s\n", current->key, current->value);
+				printf("%s=%s\n", current->key, current->value);
 				current = current->next;
 			}
 		}

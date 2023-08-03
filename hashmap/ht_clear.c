@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 12:32:20 by mumontei          #+#    #+#             */
-/*   Updated: 2023/07/20 14:43:45 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/08/03 08:00:23 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ void	ht_clear(t_hashtable *ht)
 		ht->table[i] = NULL;
 		i++;
 	}
+	free(ht);
 }

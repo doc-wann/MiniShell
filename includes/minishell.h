@@ -21,6 +21,7 @@
 typedef struct s_minishell
 {
 	struct s_hashtable	*env;
+	struct s_hashtable	*local;
 	int					exit_code;
 }	t_minishell;
 
@@ -42,7 +43,7 @@ extern t_minishell	g_minishell;
 
 t_hashtable		*ht_create(void);
 unsigned int	hash(const char *key);
-t_hashnode		*ht_search(char *key);
+t_hashnode		*ht_search(t_hashtable *ht, char *key);
 void			ht_clear(t_hashtable *ht);
 void			ht_print(const t_hashtable *ht);
 void			ht_delete(t_hashtable *ht, const char *key);
@@ -60,8 +61,9 @@ void			error_msg(char *command, char*msg, int status_code);
 void			ft_exit(char **args);
 char			*get_key(char *env);
 char			*get_value(char *env);
-void			declare_var(char **cmd, int index);
+void			declare_and_assign(char **cmd, int index);
 int				export_var(char **command, int index);
 int				ft_export(char **command);
 void			minishell(void);
+void			export_local_var(char **cmd, int index);
 #endif

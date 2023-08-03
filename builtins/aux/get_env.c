@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:12:36 by mumontei          #+#    #+#             */
-/*   Updated: 2023/08/01 14:24:34 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/08/02 17:20:30 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ char	*get_key(char *env)
 	char	*key;
 
 	key = NULL;
-	if (!env)
-		return (0);
 	key_length = 0;
 	i = -1;
+	if (!env)
+		return (0);
 	while (env[++i] != '=')
 		key_length++;
 	key = (char *)malloc(sizeof(char) * key_length + 1);
