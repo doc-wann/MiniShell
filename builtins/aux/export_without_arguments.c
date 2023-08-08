@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:41:49 by mumontei          #+#    #+#             */
-/*   Updated: 2023/08/08 16:35:08 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/08/08 17:09:01 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,4 +115,8 @@ void	export_without_args(void)
 		if (ft_strncmp(arr[i], "_=", 2))
 			printf("declare -x %s\n", arr[i]);
 	}
+	i = -1;
+	while (++i < num_envs)
+		free(arr[i]);
+	free(arr);
 }
