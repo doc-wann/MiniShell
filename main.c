@@ -12,6 +12,7 @@ void sig_handler(int);
 
 int main(int ac, char **av, char **env)
 {
+	//define the signal catchers; 
 	signal(SIGINT, sig_handler);
 	signal(SIGQUIT, sig_handler);
 
@@ -46,16 +47,18 @@ int main(int ac, char **av, char **env)
 
 void sig_handler(int signum)
 {
+
+	//this is a bait entry, and will cause the console to print the command inserted! it will help us to erase it in a clean way
 	if (signum > 55)
-	{
 		return;
-	}
+
+	//send the bait signal and execute the command line cleaner instructions (backspaces and erasers)
 	else
 	{
 		sig_handler(signum + 55);
 		write(1,"\b\b\033[K", 6);
 	}
-
+	//finally, execute the command sent =)
 	if (signum == SIGINT)
 	{
 		write(1, "\n$", 2);
