@@ -66,4 +66,6 @@ int				export_var(char **command, int index);
 int				ft_export(char **command);
 void			minishell(void);
 void			export_local_var(char **cmd, int index);
+void			export_without_args(void);
+char			**hashmap_to_2darray(t_hashtable *dict);
 #endif

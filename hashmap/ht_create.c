@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 18:51:12 by mumontei          #+#    #+#             */
-/*   Updated: 2023/07/20 12:57:01 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/08/08 12:36:56 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_hashtable	*ht_create(void)
 	t_hashtable	*ht;
 	int			i;
 
-	ht = (t_hashtable *)malloc(sizeof(t_hashtable));
+	ht = (t_hashtable *)ft_calloc(TABLE_SIZE, sizeof(t_hashnode));
 	i = 0;
 	while (i < TABLE_SIZE)
 	{

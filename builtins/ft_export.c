@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:19:25 by mumontei          #+#    #+#             */
-/*   Updated: 2023/08/03 08:13:44 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/08/08 16:15:17 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,5 @@ int	ft_export(char **command)
 	if (command[0])
 		return (export_var(command, 0));
 	else
-		ft_exit(command);
+		export_without_args();
 }
