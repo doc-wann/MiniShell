@@ -3,53 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdaniele <hdaniele@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 20:11:08 by hdaniele          #+#    #+#             */
-/*   Updated: 2022/09/19 21:36:10 by hdaniele         ###   ########.fr       */
+/*   Created: 2022/04/30 04:11:21 by mumontei          #+#    #+#             */
+/*   Updated: 2022/05/10 03:14:25 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-
-char	*ft_is_lesser(char *substr)
-{
-	if (!substr)
-		return (NULL);
-	substr[0] = '\0';
-	return (substr);
-}
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	unsigned int	i;
-	unsigned int	s_len;
-	char			*substr;
+	char	*substr;
+	size_t	i;
+	size_t	size;
 
+	substr = NULL;
 	if (!s)
-		return (NULL);
-	s_len = ft_strlen(s);
-	if (s_len < start)
-	{
-		substr = malloc(sizeof(char) * 1);
-		substr = ft_is_lesser(substr);
 		return (substr);
-	}
-	substr = malloc(sizeof(char) * (len + 1));
+	size = ft_strlen(s) - start;
+	if ((int)size < 0)
+		size = 0;
+	else if (size > len)
+		size = len;
+	substr = malloc((size + 1) * sizeof(char));
 	if (!substr)
-		return (NULL);
+		return (substr);
 	i = 0;
-	while (i < len)
+	while (start <= ft_strlen(s) && i < size)
 	{
-		substr[i] = s[start + i];
+		substr[i] = s[start];
+		start++;
 		i++;
 	}
 	substr[i] = '\0';
 	return (substr);
 }
-
-//int	main(int argc, char *argv[])
-//{
-//	printf("%s", ft_substr(argv[1], ft_atoi(argv[2]), ft_strlen(argv[1])));
-//}

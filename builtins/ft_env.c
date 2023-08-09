@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/01 00:23:53 by mumontei          #+#    #+#             */
-/*   Updated: 2022/05/01 00:47:38 by mumontei         ###   ########.fr       */
+/*   Created: 2023/06/22 14:43:21 by mumontei          #+#    #+#             */
+/*   Updated: 2023/06/23 11:35:00 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/minishell.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_env(char **envp)
 {
-	write(fd, &c, 1);
+	int	i;
+
+	i = -1;
+	//if (args && args[1])
+	//	exit(ERROR);
+	while (envp[++i])
+		put_endl(envp[i], STDOUT_FILENO);
+	return (SUCCESS);
 }

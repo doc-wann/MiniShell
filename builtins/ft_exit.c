@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 18:00:40 by mumontei          #+#    #+#             */
-/*   Updated: 2023/08/09 11:40:25 by mumontei         ###   ########.fr       */
+/*   Created: 2023/08/01 10:20:48 by mumontei          #+#    #+#             */
+/*   Updated: 2023/08/03 07:55:13 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/minishell.h"
+#include "../includes/minishell.h"
 
-t_minishell	g_minishell;
-
-int	main(int ac, char **av, char **env)
+void	ft_exit(char **args)
 {
-	g_minishell.env = ht_create();
-	envars_to_hashtable(env);
+	int	i;
+
+	i = 0;
+	while (args[i])
+		i++;
+	if (i > 2)
+	{
+		error_msg("exit: ", "too many arguments\n", 1);
+		return ;
+	}
 	ht_clear(g_minishell.env);
+	free(g_minishell.env);
 	if (g_minishell.local)
 		ht_clear(g_minishell.local);
-	return (0);
-	// minishell();
+	write(1, "exit\n", 5);
+	exit(g_minishell.exit_code);
 }

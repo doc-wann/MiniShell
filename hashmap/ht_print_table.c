@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ht_print_table.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 18:00:40 by mumontei          #+#    #+#             */
-/*   Updated: 2023/08/09 11:40:25 by mumontei         ###   ########.fr       */
+/*   Created: 2023/07/19 12:32:23 by mumontei          #+#    #+#             */
+/*   Updated: 2023/08/02 16:00:59 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/minishell.h"
+#include "../includes/minishell.h"
 
-t_minishell	g_minishell;
-
-int	main(int ac, char **av, char **env)
+// Function to print the contents of the hashtable
+void	ht_print(const t_hashtable *ht)
 {
-	g_minishell.env = ht_create();
-	envars_to_hashtable(env);
-	ht_clear(g_minishell.env);
-	if (g_minishell.local)
-		ht_clear(g_minishell.local);
-	return (0);
-	// minishell();
+	int			i;
+	t_hashnode	*current;
+
+	current = NULL;
+	i = -1;
+	while (++i < TABLE_SIZE)
+	{
+		if (ht->table[i])
+		{
+			current = ht->table[i];
+			while (current != NULL)
+			{
+				printf("%s=%s\n", current->key, current->value);
+				current = current->next;
+			}
+		}
+	}
 }

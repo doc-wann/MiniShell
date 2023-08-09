@@ -3,75 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdaniele <hdaniele@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 19:54:42 by hdaniele          #+#    #+#             */
-/*   Updated: 2022/09/28 19:31:11 by hdaniele         ###   ########.fr       */
+/*   Created: 2022/05/13 03:40:17 by mumontei          #+#    #+#             */
+/*   Updated: 2022/05/13 03:47:28 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-int	ft_count(int n)
+static int	num_digits(long int n)
 {
-	int	len;
+	int	digits;
 
-	len = 1;
+	digits = 0;
+	if (n == 0)
+		return (1);
 	if (n < 0)
-		len++;
-	while (n / 10)
+		n = -n;
+	while (n > 0)
 	{
+		digits++;
 		n = n / 10;
-		len++;
 	}
-	return (len);
+	return (digits);
 }
 
-void	ft_alloc(size_t len, char *x, int n)
+static int	ft_is_negative(long int n)
 {
-	x[len] = '\0';
 	if (n < 0)
-	{
-		x[0] = '-';
-		n = n * -1;
-	}
-	if (n == 0)
-		x[0] = 48;
-	while (len >= 0 && n > 0)
-	{
-		x[len - 1] = (n % 10) + 48;
-		n = n / 10;
-		len--;
-	}
+		return (1);
+	return (0);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*x;
-	size_t	len;
+	char		*mem;
+	int			i;
+	int			digits;
+	int			is_negative;
+	long int	ln;
 
-	if (n == -2147483648)
-	{
-		x = ft_strdup("-2147483648");
-		return (x);
-	}
-	len = ft_count(n);
-	x = malloc(sizeof(char) * len + 1);
-	if (!x)
+	ln = n;
+	is_negative = ft_is_negative(ln);
+	digits = num_digits(ln);
+	i = 0;
+	if (ln < 0)
+		ln = -ln;
+	mem = (char *)malloc((digits + 1 + is_negative) * sizeof(char));
+	if (!mem)
 		return (NULL);
-	ft_alloc(len, x, n);
-	return (x);
+	if (is_negative)
+		mem[i++] = '-';
+	while (digits)
+	{
+		mem[digits-- - 1 + is_negative] = (ln % 10) + 48;
+		ln = ln / 10;
+		i++;
+	}
+	mem[i] = '\0';
+	return (mem);
 }
-
-// int	main(void)
-// {
-// 	int	x = -2147483648;
-// 	char	*y;
-
-// 	y = ft_itoa(x);
-// 	printf("%i", x);
-// 	printf("\n");
-// 	printf("%s", y);
-// 	printf("\n");
-// }

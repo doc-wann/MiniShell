@@ -3,72 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdaniele <hdaniele@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 00:19:34 by hdaniele          #+#    #+#             */
-/*   Updated: 2022/09/28 19:32:59 by hdaniele         ###   ########.fr       */
+/*   Created: 2022/04/27 01:18:45 by mumontei          #+#    #+#             */
+/*   Updated: 2022/05/15 00:07:26 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-
-int	atoi_looper(const char *str, int x)
-{
-	int	result;
-	int	mult;
-
-	result = 0;
-	mult = 1;
-	if (str[x] == 45 || str[x] == 32 || str[x] == 43)
-		str = &str[x + 1];
-	while ((str[x] >= 48 && str[x] <= 57) && (str[x] != '\0'))
-	{
-		if (!(str[x + 1] >= 48 && str[x + 1] <= 57))
-		{
-			while (x != -1)
-			{
-				result = result + (mult * (int)(str[x] - 48));
-				mult = mult * 10;
-				if (result >= 214483647)
-					return (-1);
-				x--;
-			}
-			return (result);
-		}
-		x++;
-	}
-	return (result);
-}
 
 int	ft_atoi(const char *str)
 {
-	int	x;
-	int	mult;
+	int		sign;
+	size_t	result;
 
-	x = 0;
-	mult = 1;
-	while (str[x] == ' ' || str[x] == '\n' || str[x] == '\t'
-		|| str[x] == '\v' || str[x] == '\f' || str[x] == '\r')
-		str = &str[1];
-	if (ft_strncmp(str, "-2147483648", 12) == 0)
-		return (-2147483648);
-	if (ft_strncmp(str, "+2147483647", 11) == 0
-		|| ft_strncmp(str, "2147483647", 10) == 0)
-		return (2147483647);
-	if (str[x] == 45)
-		return (-1 * (atoi_looper(str, x)));
-	else
-		return (atoi_looper(&str[x], x));
+	result = 0;
+	sign = 1;
+	while (((*str >= '\t' && *str <= '\r') || *str == ' ') && *str != '\0')
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1 * sign;
+		str++;
+		if (*str == '-' || *str == '+')
+			return (0);
+	}
+	while (ft_isdigit(*str))
+	{
+		result = (result * 10) + (*str - 48);
+		str++;
+	}
+	return (sign * result);
 }
-
-// int	main(int argc, char *argv[])
-// {
-// 	printf("MEU ATOI \n");
-// 	printf("%i",ft_atoi(argv[1]));
-// 	printf("\n");
-// 	printf("ATOI ORIGINAL \n");
-// 	printf("%i",atoi(argv[1]));
-// 	printf("\n");
-// 	return (0);
-// }

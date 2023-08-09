@@ -3,34 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdaniele <hdaniele@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 21:28:04 by hdaniele          #+#    #+#             */
-/*   Updated: 2022/09/15 19:13:19 by hdaniele         ###   ########.fr       */
+/*   Created: 2022/04/12 03:36:30 by mumontei          #+#    #+#             */
+/*   Updated: 2022/05/10 03:28:21 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*s;
-	char	*d;
+	char	*char_src;
+	char	*char_dest;
 	size_t	i;
 
-	d = (char *)dst;
-	s = (char *)src;
 	i = 0;
-	if (d > s)
-		while (len-- > 0)
-			d[len] = s[len];
+	if (!dest && !src)
+		return (NULL);
+	char_src = (char *)src;
+	char_dest = (char *)dest;
+	if (char_dest > char_src)
+	{
+		while (n-- > 0)
+			char_dest[n] = char_src[n];
+	}
 	else
 	{
-		while (i < len)
+		while (i < n)
 		{
-			d[i] = s[i];
+			char_dest[i] = char_src[i];
 			i++;
 		}
 	}
-	return (dst);
+	return (dest);
 }

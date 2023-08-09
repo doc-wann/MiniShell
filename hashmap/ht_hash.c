@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ht_hash.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 18:00:40 by mumontei          #+#    #+#             */
-/*   Updated: 2023/08/09 11:40:25 by mumontei         ###   ########.fr       */
+/*   Created: 2023/07/19 12:32:17 by mumontei          #+#    #+#             */
+/*   Updated: 2023/07/20 21:30:14 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/minishell.h"
+#include "../includes/minishell.h"
 
-t_minishell	g_minishell;
-
-int	main(int ac, char **av, char **env)
+// Hash function
+unsigned int	hash(const char *key)
 {
-	g_minishell.env = ht_create();
-	envars_to_hashtable(env);
-	ht_clear(g_minishell.env);
-	if (g_minishell.local)
-		ht_clear(g_minishell.local);
-	return (0);
-	// minishell();
+	int				i;
+	unsigned int	hash_value;
+
+	hash_value = 0;
+	i = 0;
+	while (key && key[i] != '\0')
+	{
+		//hash_value = key[i] + 31 * hash_value;
+		hash_value = ((hash_value << 5) + hash_value) + key[i];
+		i++;
+	}
+	return (hash_value % TABLE_SIZE);
 }

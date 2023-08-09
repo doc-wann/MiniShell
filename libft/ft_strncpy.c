@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 18:00:40 by mumontei          #+#    #+#             */
-/*   Updated: 2023/08/09 11:40:25 by mumontei         ###   ########.fr       */
+/*   Created: 2023/07/27 09:46:26 by mumontei          #+#    #+#             */
+/*   Updated: 2023/07/27 09:58:22 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/minishell.h"
+#include "libft.h"
 
-t_minishell	g_minishell;
-
-int	main(int ac, char **av, char **env)
+char	*ft_strncpy(char *src, unsigned int n)
 {
-	g_minishell.env = ht_create();
-	envars_to_hashtable(env);
-	ht_clear(g_minishell.env);
-	if (g_minishell.local)
-		ht_clear(g_minishell.local);
-	return (0);
-	// minishell();
+	unsigned int	index;
+	char			*dest;
+
+	dest = ft_calloc(n, sizeof(char));
+	index = 0;
+	while (index < n && src[index] != '\0')
+	{
+		dest[index] = src[index];
+		index++;
+	}
+	while (index < n)
+	{
+		dest[index] = '\0';
+		index++;
+	}
+	return (dest);
 }
