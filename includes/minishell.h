@@ -68,4 +68,5 @@ void			minishell(void);
 void			export_local_var(char **cmd, int index);
 void			export_without_args(void);
 char			**hashmap_to_2darray(t_hashtable *dict);
+int				unset(char **envs);
 #endif

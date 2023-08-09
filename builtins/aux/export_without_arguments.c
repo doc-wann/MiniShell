@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:41:49 by mumontei          #+#    #+#             */
-/*   Updated: 2023/08/08 17:09:01 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/08/08 17:12:04 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static char	*joint_with_quotes(t_hashnode *node)
 	char	*str;
 	char	*key;
 	char	*value;
-	
+
 	key = ft_strjoin(node->key, "=\"");
 	value = ft_strjoin(node->value, "\"");
 	str = ft_strjoin(key, value);
@@ -104,14 +104,13 @@ void	export_without_args(void)
 	char	**arr;
 	int		i;
 	int		num_envs;
-	
+
 	i = -1;
 	num_envs = count_vars(g_minishell.env);
 	arr = hashmap_to_2darray(g_minishell.env);
 	insertion_sort(arr, num_envs);
-	while(++i < num_envs)
+	while (++i < num_envs)
 	{
-		// if (ft_strncmp(arr[i], "OLWPWD=", 7) && ft_strncmp(arr[i], "_=", 2))
 		if (ft_strncmp(arr[i], "_=", 2))
 			printf("declare -x %s\n", arr[i]);
 	}
