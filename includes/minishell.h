@@ -16,3 +16,6 @@ int		ft_pwd(void);
 void 	ft_started(void);
 void	ft_cd(char **args, char **envs);
 char	*path_parser(char *path);
+char 	*ft_backtrack(char *track);
+
+char *messagestart(char **env);

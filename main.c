@@ -25,7 +25,8 @@ int main(int ac, char **av, char **env)
 	i = 0;
 	while(1)
 	{
-		read = readline("\n$");
+		//shall be free'd
+		read = readline(messagestart(env));
 		if (read == 0)
 		{
 			ft_exit();

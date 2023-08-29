@@ -32,3 +32,8 @@ int activator(char **array, char *read, char **env)
 		return (0);
 	}
 }
+
+char *messagestart(char **envs)
+{
+	return ft_strjoin(ft_strjoin(get_env(envs, "$USER"), "@"),ft_substr(ft_strjoin(ft_strjoin(getcwd(NULL, 400), "$ "), " "), 1, 1 +  ft_strlen(getcwd(NULL, 400))));
+}
